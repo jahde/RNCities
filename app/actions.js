@@ -16,34 +16,34 @@ export function addCity(city) {
   }
 }
 
-export function fetchFromApi() {
-  return (dispatch) => {
-    dispatch(fetchCities())
-    GetCities()
-      .then(cities => {
-        dispatch(fetchCitiesSuccess(cities))
-      })
-      .catch(err => {
-        dispatch(fetchCitiesFailure())
-      })
-  }
-}
-
-function fetchCities() {
+export function fetchCities() {
   return {
     type: FETCH_CITIES
   }
 }
 
-function fetchCitiesSuccess(cities) {
-  return {
-    type: FETCH_CITIES_SUCCESS,
-    cities
-  }
-}
-
-function fetchCitiesFailure() {
-  return {
-    type: FETCH_CITIES_FAILURE
-  }
-}
+// function fetchCitiesSuccess(cities) {
+//   return {
+//     type: FETCH_CITIES_SUCCESS,
+//     cities
+//   }
+// }
+//
+// export function fetchFromApi() {
+//   return (dispatch) => {
+//     dispatch(fetchCities())
+//     GetCities()
+//       .then(cities => {
+//         dispatch(fetchCitiesSuccess(cities))
+//       })
+//       .catch(err => {
+//         dispatch(fetchCitiesFailure())
+//       })
+//   }
+// }
+//
+// function fetchCitiesFailure() {
+//   return {
+//     type: FETCH_CITIES_FAILURE
+//   }
+// }

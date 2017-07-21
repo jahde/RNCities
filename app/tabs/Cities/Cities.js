@@ -3,7 +3,7 @@ import { Image, ScrollView, Text } from 'react-native';
 
 import { connect } from 'react-redux';
 import { ListItem } from 'react-native-elements';
-import { fetchFromApi } from '../../actions';
+import { fetchCities } from '../../actions';
 
 class Cities extends React.Component {
   static navigationOptions = {
@@ -36,7 +36,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 const mapDispatchToProps = {
-  dispatchFetchFromApi: fetchFromApi,
+  dispatchFetchFromApi: fetchCities,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cities);

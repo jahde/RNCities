@@ -14,12 +14,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Routes from './app/routes';
 
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+import CitySaga from './app/citySaga';
+
+const sagaMiddleWare = createSagaMiddleware();
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk), 
+  applyMiddleware(sagaMiddleWare),
 );
+sagaMiddleWare.run(CitySaga);
 
 const App = () => (
   <Provider store={store}>
