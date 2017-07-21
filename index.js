@@ -10,11 +10,16 @@ import {
 } from 'react-native';
 
 import rootReducer from './app/reducers';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import Routes from './app/routes';
 
-const store = createStore(rootReducer);
+import thunk from 'redux-thunk';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk), 
+);
 
 const App = () => (
   <Provider store={store}>

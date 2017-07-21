@@ -28,6 +28,18 @@ class AddCity extends React.Component {
       }
     })
   }
+  addCity = () => {
+    this.props.dispatchAddCity({
+      name: this.state.formValues.cityName,
+      country: this.state.formValues.countryName,
+    });
+    this.setState({
+      formValues: {
+        cityName: '',
+        countryName: '',
+      }
+    })
+  }
   render() {
     return (
       <View style={styles.container}>

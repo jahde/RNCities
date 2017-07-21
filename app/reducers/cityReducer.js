@@ -7,20 +7,21 @@ import {
 } from '../constants';
 
 const initialState = {
-  cities: {
-    Austin: {
-      name: 'Austin',
-      country: 'USA',
-    },
-    Seattle: {
-      name: 'Seattle',
-      country: 'USA',
-    }
-  }
+  cities: {},
+  isFetching: false,
+  error: false,
 }
 
 export default function cityReducer(state = initialState, action) {
   switch(action.type) {
+    case FETCH_CITIES:
+      return state
+    case FETCH_CITIES_SUCCESS:
+      return {
+        ...state,
+        ...action.cities,
+      }
+    case FETCH_CITIES_FAILURE:
     case ADD_CITY:
       return {
         ...state,

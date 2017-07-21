@@ -7,9 +7,43 @@ import {
   FETCH_CITIES_FAILURE
 } from './constants';
 
+import GetCities from './api';
+
 export function addCity(city) {
   return {
     type: ADD_CITY,
     city,
+  }
+}
+
+export function fetchFromApi() {
+  return (dispatch) => {
+    dispatch(fetchCities())
+    GetCities()
+      .then(cities => {
+        dispatch(fetchCitiesSuccess(cities))
+      })
+      .catch(err => {
+        dispatch(fetchCitiesFailure())
+      })
+  }
+}
+
+function fetchCities() {
+  return {
+    type: FETCH_CITIES
+  }
+}
+
+function fetchCitiesSuccess(cities) {
+  return {
+    type: FETCH_CITIES_SUCCESS,
+    cities
+  }
+}
+
+function fetchCitiesFailure() {
+  return {
+    type: FETCH_CITIES_FAILURE
   }
 }
